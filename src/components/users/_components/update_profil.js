@@ -1,3 +1,4 @@
+import APIUsers from '../../../api/users_api';
 
 const Settings =()=>{
 

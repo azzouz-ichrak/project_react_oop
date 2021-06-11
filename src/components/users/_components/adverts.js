@@ -1,4 +1,6 @@
+import React,{useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
+import APIAdverts from '../../../api/adverts_api';
 
 const Adverts = (props) => {
     const history=useHistory();
@@ -6,6 +8,16 @@ const Adverts = (props) => {
     const Delete=(id)=>{
         
     }
+    const [data, setData] = useState();
+    useEffect(() =>{
+        APIAdverts.getAllAdverts()
+        .then(response =>{
+            setData(response.data);
+        })
+        .catch(e =>{
+            console.log(e);
+        })
+    },[data])
     const Update =(id)=>{
         props.view("Modify"); //sending data from child to parent
         props.advertid(id); //sending data from child to parent
